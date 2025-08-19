@@ -23,7 +23,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 30px 20px;
         }
 
         /* Header & Navigation */
@@ -269,7 +269,7 @@
         }
 
         /* Hero Section */
-        
+
 
         @keyframes float {
             0% {
@@ -477,6 +477,12 @@
         }
 
         .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .emergency-stat {
             font-size: 2rem;
             font-weight: bold;
             color: #2563eb;
@@ -793,6 +799,227 @@
                 background-image: url('https://media.istockphoto.com/id/2159561975/photo/experienced-hvac-technician-ensuring-quality-air-conditioning-installation.jpg?s=612x612&w=0&k=20&c=Mu8ve3CQdWjRUVxgZDR1iwV0824TZ-qMR5f-9QYEA2o=');
             }
         }
+
+        .about-image {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .swiper-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .swiper-wrapper {
+            position: relative;
+            width: 400%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .swiper-slide {
+            width: 25%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .swiper-slide.active img {
+            transform: scale(1.05);
+        }
+
+        .swiper-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+
+        .swiper-slide:hover::before {
+            opacity: 1;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 30px 20px 20px;
+            z-index: 2;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .swiper-slide.active .slide-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .slide-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .slide-description {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .swiper-navigation {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .swiper-navigation:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .swiper-prev {
+            left: 20px;
+        }
+
+        .swiper-next {
+            right: 20px;
+        }
+
+        .swiper-pagination {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .pagination-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .pagination-dot.active {
+            background: white;
+            transform: scale(1.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .swiper-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform-origin: left;
+            transform: scaleX(0);
+            animation: progressBar 5s linear infinite;
+            z-index: 10;
+        }
+
+        @keyframes progressBar {
+            0% {
+                transform: scaleX(0);
+            }
+
+            100% {
+                transform: scaleX(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-image {
+                height: 300px;
+                border-radius: 15px;
+            }
+
+            .swiper-navigation {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .swiper-prev {
+                left: 15px;
+            }
+
+            .swiper-next {
+                right: 15px;
+            }
+
+            .slide-overlay {
+                padding: 20px 15px 15px;
+            }
+
+            .slide-title {
+                font-size: 1em;
+            }
+
+            .slide-description {
+                font-size: 0.8em;
+            }
+        }
     </style>
 </head>
 
@@ -905,14 +1132,14 @@
                     <h3>Emergency Service</h3>
                     <p>24/7 emergency repair services because we know AC problems don't wait for business hours.</p>
                 </div>
-                <div class="service-card fade-in">
+                <!-- <div class="service-card fade-in">
                     <div class="service-icon">
                         <i class="fas fa-filter"></i>
                     </div>
                     <h3>Duct Cleaning</h3>
                     <p>Professional duct cleaning services to improve air quality and system efficiency in your home or
                         office.</p>
-                </div>
+                </div> -->
                 <div class="service-card fade-in">
                     <div class="service-icon">
                         <i class="fas fa-thermometer-half"></i>
@@ -931,7 +1158,8 @@
             <div class="about-content">
                 <div class="about-text fade-in">
                     <h2>Why Choose United Desert Cooling and Heating?</h2>
-                    <p>With over 15 years of experience in the HVAC industry, United Desert Cooling and Heating has become the trusted choice
+                    <p>With over 15 years of experience in the HVAC industry, United Desert Cooling and Heating has
+                        become the trusted choice
                         for residential and commercial air conditioning services. Our team of certified technicians is
                         committed to providing exceptional service and ensuring your complete satisfaction.</p>
                     <p>We use only high-quality parts and the latest diagnostic equipment to ensure your AC system
@@ -939,7 +1167,7 @@
                         a reputation as the most reliable AC service company in the area.</p>
                     <div class="stats">
                         <div class="stat-item">
-                            <div class="stat-number">5000+</div>
+                            <div class="stat-number">100+</div>
                             <div class="stat-label">Happy Customers</div>
                         </div>
                         <div class="stat-item">
@@ -947,7 +1175,7 @@
                             <div class="stat-label">Years Experience</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">24/7</div>
+                            <div class="emergency-stat">24/7</div>
                             <div class="stat-label">Emergency Service</div>
                         </div>
                         <div class="stat-item">
@@ -956,10 +1184,207 @@
                         </div>
                     </div>
                 </div>
-                <div class="about-image fade-in">
+                <!-- <div class="about-image fade-in">
                     <img src="https://www.neit.edu/wp-content/uploads/2022/03/An-AC-technician-at-work.jpg"
                         alt="AC Technician at work">
+                </div> -->
+                <div class="about-image fade-in">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper" id="swiperWrapper">
+                            <div class="swiper-slide active">
+                                <img src="https://media.istockphoto.com/id/1133646077/photo/a-professional-electrician-man-is-fixing-a-heavy-duty-unit-of-central-air-conditioning-system.jpg?s=612x612&w=0&k=20&c=UIwoyZ4ia_gJTYqxDtZhkHhhqdyRZIauCUBMOBLrnLw="
+                                    alt="AC Technician at work">
+                                <div class="slide-overlay">
+                                    <div class="slide-title">Professional AC Technician</div>
+                                    <div class="slide-description">Expert technician performing maintenance and repairs
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://media.istockphoto.com/id/524026994/photo/technician-and-capacitor.jpg?s=612x612&w=0&k=20&c=edB1vaMlZjFTRT3dHRNtuk7SvxwxFGE02yuaryBJzN8="
+                                    alt="HVAC System Installation">
+                                <div class="slide-overlay">
+                                    <div class="slide-title">HVAC Installation</div>
+                                    <div class="slide-description">Professional installation of heating and cooling
+                                        systems</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://media.istockphoto.com/id/2172352979/photo/maintenance-engineers-servicing-air-conditioning-units.jpg?s=612x612&w=0&k=20&c=nzPZSQho4b4Z4eiQFWY1lHVldLEi5-rPiaSN68eGq94="
+                                    alt="Air Conditioning Unit">
+                                <div class="slide-overlay">
+                                    <div class="slide-title">Modern AC Units</div>
+                                    <div class="slide-description">State-of-the-art air conditioning technology</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://media.istockphoto.com/id/2165544767/photo/technician-performing-maintenance-on-air-conditioning-unit-in-residential-garden-during.jpg?s=612x612&w=0&k=20&c=vKwWhiXKBkmdNy5Zz5L9Ntw7u9QhXLEquaFObOpDWvY="
+                                    alt="Technician Tools">
+                                <div class="slide-overlay">
+                                    <div class="slide-title">Professional Tools</div>
+                                    <div class="slide-description">Advanced equipment for precision service</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="swiper-navigation swiper-prev" onclick="previousSlide()">&#8249;</button>
+                        <button class="swiper-navigation swiper-next" onclick="nextSlide()">&#8250;</button>
+
+                        <div class="swiper-pagination">
+                            <div class="pagination-dot active" onclick="goToSlide(0)"></div>
+                            <div class="pagination-dot" onclick="goToSlide(1)"></div>
+                            <div class="pagination-dot" onclick="goToSlide(2)"></div>
+                            <div class="pagination-dot" onclick="goToSlide(3)"></div>
+                        </div>
+
+                        <div class="swiper-progress"></div>
+                    </div>
                 </div>
+
+                <script>
+                    let currentSlide = 0;
+                    const slides = document.querySelectorAll('.swiper-slide');
+                    const dots = document.querySelectorAll('.pagination-dot');
+                    const wrapper = document.getElementById('swiperWrapper');
+                    const totalSlides = slides.length;
+                    let autoSlideInterval;
+
+                    function updateSlider() {
+                        // Move wrapper - each slide is 25% of the wrapper width
+                        const translateX = currentSlide * 25;
+                        wrapper.style.transform = `translateX(-${translateX}%)`;
+
+                        // Update active states
+                        slides.forEach((slide, index) => {
+                            slide.classList.toggle('active', index === currentSlide);
+                        });
+
+                        dots.forEach((dot, index) => {
+                            dot.classList.toggle('active', index === currentSlide);
+                        });
+                    }
+
+                    function nextSlide() {
+                        currentSlide = (currentSlide + 1) % totalSlides;
+                        updateSlider();
+                        resetAutoSlide();
+                    }
+
+                    function previousSlide() {
+                        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                        updateSlider();
+                        resetAutoSlide();
+                    }
+
+                    function goToSlide(index) {
+                        currentSlide = index;
+                        updateSlider();
+                        resetAutoSlide();
+                    }
+
+                    function startAutoSlide() {
+                        autoSlideInterval = setInterval(nextSlide, 5000);
+                    }
+
+                    function resetAutoSlide() {
+                        clearInterval(autoSlideInterval);
+                        startAutoSlide();
+                    }
+
+                    // Touch/swipe functionality
+                    let startX = 0;
+                    let currentX = 0;
+                    let isDragging = false;
+
+                    wrapper.addEventListener('touchstart', (e) => {
+                        startX = e.touches[0].clientX;
+                        isDragging = true;
+                        clearInterval(autoSlideInterval);
+                    });
+
+                    wrapper.addEventListener('touchmove', (e) => {
+                        if (!isDragging) return;
+                        currentX = e.touches[0].clientX;
+                    });
+
+                    wrapper.addEventListener('touchend', () => {
+                        if (!isDragging) return;
+                        isDragging = false;
+
+                        const diffX = startX - currentX;
+                        const threshold = 50;
+
+                        if (Math.abs(diffX) > threshold) {
+                            if (diffX > 0) {
+                                nextSlide();
+                            } else {
+                                previousSlide();
+                            }
+                        } else {
+                            resetAutoSlide();
+                        }
+                    });
+
+                    // Mouse drag functionality
+                    wrapper.addEventListener('mousedown', (e) => {
+                        startX = e.clientX;
+                        isDragging = true;
+                        clearInterval(autoSlideInterval);
+                        e.preventDefault();
+                    });
+
+                    wrapper.addEventListener('mousemove', (e) => {
+                        if (!isDragging) return;
+                        currentX = e.clientX;
+                    });
+
+                    wrapper.addEventListener('mouseup', () => {
+                        if (!isDragging) return;
+                        isDragging = false;
+
+                        const diffX = startX - currentX;
+                        const threshold = 50;
+
+                        if (Math.abs(diffX) > threshold) {
+                            if (diffX > 0) {
+                                nextSlide();
+                            } else {
+                                previousSlide();
+                            }
+                        } else {
+                            resetAutoSlide();
+                        }
+                    });
+
+                    wrapper.addEventListener('mouseleave', () => {
+                        if (isDragging) {
+                            isDragging = false;
+                            resetAutoSlide();
+                        }
+                    });
+
+                    // Keyboard navigation
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'ArrowLeft') {
+                            previousSlide();
+                        } else if (e.key === 'ArrowRight') {
+                            nextSlide();
+                        }
+                    });
+
+                    // Pause on hover
+                    const container = document.querySelector('.about-image');
+                    container.addEventListener('mouseenter', () => {
+                        clearInterval(autoSlideInterval);
+                    });
+
+                    container.addEventListener('mouseleave', () => {
+                        startAutoSlide();
+                    });
+
+                    // Initialize
+                    startAutoSlide();
+                </script>
             </div>
         </div>
     </section>
@@ -1053,7 +1478,8 @@
                     <a href="#"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
-            <p>&copy; 2025 United Desert Cooling and Heating. All rights reserved. Licensed & Insured AC Specialists.</p>
+            <p>&copy; 2025 United Desert Cooling and Heating. All rights reserved. Licensed & Insured AC Specialists.
+            </p>
         </div>
     </footer>
 
